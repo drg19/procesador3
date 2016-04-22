@@ -1,0 +1,13 @@
+
+
+
+// Instantiate the module
+PSRModifier instance_name (
+    .aluResult(aluResult), 
+    .operando1(operando1), 
+    .operando2(operando2), 
+    .aluOp(aluOp), 
+    .nzvc(nzvc)
+    );
+
+
