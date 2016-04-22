@@ -17,11 +17,11 @@ begin
 	process(Aluop,Op1,Op2,Aluresult,reset)
 	begin
 	
-	if (reset = '1')then
+	if (reset = '0')then
 		nzvc <= (others => '0');
 		
 	else		
-		if(Aluop = "001001" or Aluop = "001011")then --Addcc - Addxcc	
+		if(Aluop = "010000" or Aluop = "011000")then --Addcc - Addxcc	
 			nzvc(3) <= Aluresult(31);	
 			if(Aluresult = X"00000000")then
 				nzvc(2) <= '1';
@@ -32,7 +32,7 @@ begin
 			nzvc(0) <= (Op1 and Op2) or ((not Aluresult(31)) and (Op1 or Op2));
 			
 		else
-			if(Aluop = "001100" or Aluop = "001110")then --Subcc - Subxcc
+			if(Aluop = "010100" or Aluop = "011100")then --Subcc - Subxcc
 				nzvc(3) <= Aluresult(31);	
 				if(Aluresult = X"00000000")then
 					nzvc(2) <= '1';

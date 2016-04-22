@@ -22,6 +22,7 @@ architecture Behavioral of pros3 is
     Port ( CRS1 : in  STD_LOGIC_VECTOR (31 downto 0);
            CRS2 : in  STD_LOGIC_VECTOR (31 downto 0);
            ALURESULT : out  STD_LOGIC_VECTOR (31 downto 0);
+			  carry : in  STD_LOGIC;
            ALUOP : in  STD_LOGIC_VECTOR (5 downto 0));
 	end component;
 	
@@ -154,7 +155,7 @@ nextPC : nPC
 	 unidadES: SEU 
     Port map ( 
 					simm13 =>F(12 downto 0),
-					simm32 =>J
+					simm32 =>J  
 				  );
 
 
@@ -176,6 +177,7 @@ nextPC : nPC
 					CRS1 => H,
 					CRS2 => K,
 					ALUOP =>G(5 downto 0),
+					carry =>CA,
 					ALURESULT => L
 				);
 				
@@ -183,8 +185,8 @@ nextPC : nPC
 
 	 PSRMe: PSRM 
     Port map( 	reset =>reset,
-					Op1 =>N(31),
-					Op2 =>M(31),
+					Op1 =>H(31),
+					Op2 =>K(31),
 					Aluresult =>L,
 					Aluop => G(5 downto 0),
 					nzvc=> O(3 downto 0)
@@ -205,4 +207,5 @@ ALURESULT <= L;
 
 
 end Behavioral;
+
 
